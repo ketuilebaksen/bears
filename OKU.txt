@@ -1,0 +1,116 @@
+BEARS FLOOR — KANAL KURULUMU
+=============================
+
+Takim: Chicago Bears | Stadyum: Soldier Field
+Kadroda Caleb Williams, Rome Odunze, Luther Burden III, D'Andre Swift,
+Colston Loveland, Montez Sweat, Jaylon Johnson, Jeffery Simmons.
+
+Bas antrenor BEN JOHNSON, genel menajer Ryan Poles.
+
+Bu sezon gelenler: Coby Bryant (Seattle), Devin Bush (Cleveland),
+Neville Gallimore, Garrett Bradbury (New England).
+Gidenler: D.J. Moore (Buffalo'ya takas), Kevin Byard, Jaquan Brisker,
+C.J. Gardner-Johnson. Ilk tur secimi: safety Dillon Thieneman.
+
+KANAL ADI: Kart uzerinde "BEARS FLOOR" yaziyor, diger kanallarla ayni
+duzen. Sadece "BEARS" olsun istersen channel.json'da "name" degerini
+degistir, tek satir.
+
+
+UZUNLUK — VIKINGS/BILLS AYARI
+-----------------------------
+25.000 karakterlik (~28 dakikalik) videolara gore kuruldu:
+
+  body_cut          3.9    (kisa videolu kanallarda 3.4)
+  overlay_every_sec 30     (onlarda 25)
+  BROLL_SAMPLE      420    (onlarda 320)
+
+>>> broll release'ine EN AZ 500 klip koy. 420'den az klip varsa sistem
+    elindekini kullanir ama tekrara baslar.
+
+RENDER SURESI: 75-100 dakika. Kisa videolu kanallar 3-5 dakikada bitiyor,
+bu normal. Is siniri 330 dakika, "takildi mi" diye panige kapilma.
+
+DOSYA BOYUTU: ~1 GB civari. GitHub release tek dosyada 2 GB'a kadar
+kabul ediyor, siginiyor.
+
+
+ADIM 1 — DEPO
+-------------
+Depo adi: bears  (senin actigin)
+
+"Add a README" isaretlediysen push ederken "unrelated histories" hatasi
+cikacak. Pull / Fetch'e BASMA, Cancel de, sonra:
+
+  Repository -> Open in Command Prompt   (Ctrl + `)
+  git push --force origin main
+
+Enter, sonra GitHub Desktop'ta Ctrl + R.
+
+
+ADIM 2 — DOSYALARI KOPYALA
+--------------------------
+Bu zip'in icindekileri (OKU.txt haric) depo klasorune kopyala.
+
+Klasorde su kalmali:
+  .git  .github  assets  content  scripts  .gitignore  channel.json
+
+.github ve content Windows'ta gizli gorunebilir — Explorer'da
+"Hidden items" kutusunu ac.
+
+GitHub Desktop -> Summary: "ilk kurulum" -> Commit to main -> Push origin
+
+
+ADIM 3 — IZIN (sart)
+--------------------
+Settings -> Actions -> General -> en altta "Workflow permissions"
+"Read and write permissions" sec -> Save
+
+Bu olmadan video render edilir ama Release'e yuklenemez.
+
+
+ADIM 4 — STOK VIDEOLAR
+----------------------
+Releases -> Create a new release
+  Tag / Title : broll
+  Dosya       : Bears stok videolarini surukle (en az 500)
+  ---> "Publish release"   ("Save draft" e BASMA)
+
+Bir release'e 1000 dosya siginiyor, dolunca broll2 ac — sistem broll ile
+baslayan butun release'leri tek havuz sayiyor, ek ayar gerekmiyor.
+
+Istege bagli:  music   ambient   photos
+
+music'e hem mp3 hem wav atabilirsin, sistem ayni parcanin kopyalarini
+birlestiriyor. 28 dakikalik video icin en az 10-12 parca koy.
+
+
+ADIM 5 — ILK VIDEO
+------------------
+Ses otomasyonunda kanal listesine ekle, depo adi: bears
+
+Render kaydinda goreceklerin:
+  STOK HAVUZU: ... klipten 420 tanesi bu video icin secildi
+  [assemble] b-roll: ... clips (offset ...)
+  [assemble] sahne cesitliligi: ... farkli cekim ailesi
+  [assemble] music bed: ... parca, ... kez eklendi
+  [assemble] DONE -> work/final.mp4
+
+"b-roll: 0 clips" yaziyorsa broll release'i taslakta kalmis demektir.
+
+
+TEMPO AYARLARI
+--------------
+Ilk videoyu izledikten sonra oynayabilecegin uc deger:
+  "hook_cut": 2.8           acilisin kesim hizi
+  "body_cut": 3.9           govdenin kesim hizi (dusuk = daha hizli)
+  "overlay_every_sec": 30   ekrana yazi gelme sikligi
+
+Izle, bana soyle, birlikte ayarlariz.
+
+
+ISTEGE BAGLI — TEK OYUNCUYA OZEL HAVUZ
+--------------------------------------
+  Release tag : oyuncu-caleb-williams   (ya da takim-chicago-bears)
+  Icine en az 12 klip koy, Publish et.
+Metinde o isim en cok geciyorsa video sadece o havuzdan kurulur.
